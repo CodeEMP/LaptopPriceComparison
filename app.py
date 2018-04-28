@@ -14,7 +14,7 @@ ENV = Environment(
   autoescape=select_autoescape(['html', 'xml'])
 )
 
-apikey = "eGImbuo7MJWkAS1UEcTFn7cj"
+apikey = os.environ.get('API_KEY')
 
 def initialize(self):
       self.session = queries.Session(
@@ -41,6 +41,11 @@ class MainHandler(TemplateHandler):
       'no-store, no-cache, must-revalidate, max-age=0')
     
     self.render_template("index.html")
+      
+  def post(self):
+    pass
+    
+    
     
 class productHandler(TemplateHandler):
   def initialize(self):
