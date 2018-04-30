@@ -8,23 +8,25 @@ data = r.json()
 
 conn = psycopg2.connect("dbname=apidb user=postgres")
 cur = conn.cursor()
-cur.execute("INSERT INTO apidata VALUES (DEFAULT, 1, 'a', 1, 'tes3', 1, 'a', 'a',1, TRUE, '2017-07-23');")
-conn.commit()
+
+for a in range (0,25):
+    sku = data['products'][a]['sku']
+    prodName = data['products'][a]['name']
+    bestSellingRank = data['products'][a]['bestSellingRank'] 
+    manufacturer = data['products'][a]['manufacturer']
+    salePrice = data['products'][a]['salePrice']
+    shortDescription = data['products'][a]['shortDescription']
+    image = data['products'][a]['image']
+    regularPrice = data['products'][a]['regularPrice']
+    onSale = data['products'][a]['onSale']
+    currTime = time.strftime('%Y-%m-%d %H:%M:%S')
+    cur.execute("""
+    INSERT INTO apidata 
+    VALUES (DEFAULT, %s, %s, %s, %s, 
+    %s, %s, %s, %s, %s, '2017-07-23');
+    """,
+    (sku,prodName,bestSellingRank,manufacturer,salePrice,shortDescription,image,regularPrice,onSale))
+    conn.commit()
+
 cur.close()
 conn.close()
-    
-
-#for a in range (0,26):
-    # prodName = data['products'][a]['name']
-    # bestSellingRank = data['products'][a]['bestSellingRank'] 
-    # manufacturer = data['products'][a]['manufacturer']
-    # salePrice = data['products'][a]['salePrice']
-    # shortDescription = data['products'][a]['shortDescription']
-    # image = data['products'][a]['image']
-    # regularPrice = data['products'][a]['regularPrice']
-    # onSale = data['products'][a]['onSale']
-    #currTime = time.strftime('%Y-%m-%d %H:%M:%S')
-    #print(currTime)
-    
-
-    
