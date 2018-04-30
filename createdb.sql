@@ -1,7 +1,7 @@
 CREATE TABLE apidata (
   id SERIAL NOT NULL PRIMARY KEY,
-  sku varchar UNIQUE NOT NULL,
-  name varchar NOT NULL,
+  sku varchar NOT NULL,
+  productname varchar NOT NULL,
   best_selling_rank integer,
   manufacturer varchar,
   sale_price decimal,    
