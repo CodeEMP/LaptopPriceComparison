@@ -11,3 +11,4 @@ CREATE TABLE apidata (
   onsale boolean, 
   as_of timestamp
 );
+
