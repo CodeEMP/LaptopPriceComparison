@@ -59,7 +59,7 @@ class productHandler(TemplateHandler):
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
     product = self.session.query(
-      'SELECT * FROM table WHERE SKU = %(slug)s',
+      'SELECT * FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) AND sku LIKE %(slug)s,',
       {'slug': slug}
     )
     self.render_template("product.html", {'product': product[0]})
