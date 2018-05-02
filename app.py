@@ -5,7 +5,6 @@ import queries
 import os
 import json
 import requests
-import apiCall
 import psycopg2
 
 from jinja2 import \
