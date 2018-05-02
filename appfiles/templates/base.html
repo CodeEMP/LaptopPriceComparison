@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Laptop Price Comparison</title>
-        <meta  charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>LaptopPriceComparision</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <style>
+      body {
+        text-align: center;
+        background-color: #FAFFFE;
+      }
+      .textfield {
+        font-size: 1.2em;
+        width: 400px;
+        margin-bottom: 20px;
+        background-image: url(mic.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        border: 2px solid black;
+      }
+      .textfield2 {
+        font-size: 1em;
+        width: 400px;
+        margin-bottom: 20px;
+        text-align: center;
+        border: 2px solid black;
+      }
+      img {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      button {
+        font-size: 0.8em;
+        color: gray;
+        font-weight: lighter;
+        padding: 10px;
+        background-color: #D8F3E2;
+        border: 0.8px solid #D8F3E2;
+      }
+    </style>
     </head>
     <body>
         {% block header %}
-        <div>Header</div>
+        <header>
+            <h1 style='text-align: center;'>
+                Laptop Price Comparison
+            </h1>
+        </header>
         {% endblock %}
         {% block content %}{% endblock %}
         {% block footer %}

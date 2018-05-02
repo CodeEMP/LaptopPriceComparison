@@ -2,8 +2,11 @@ import json
 import requests
 import psycopg2
 import time
+import os
 
-r = requests.get('https://api.bestbuy.com/v1/products(bestSellingRank>0&(categoryPath.id=abcat0502000))?apiKey=KEY&sort=bestSellingRank.asc&show=bestSellingRank,manufacturer,name,salePrice,image,regularPrice,onSale,shortDescription,sku&pageSize=50&format=json')
+apikey = os.environ.get('API_KEY')
+
+r = requests.get('https://api.bestbuy.com/v1/products(bestSellingRank>0&(categoryPath.id=abcat0502000))?apiKey='+apikey+'&sort=bestSellingRank.asc&show=bestSellingRank,manufacturer,name,salePrice,image,regularPrice,onSale,shortDescription,sku&pageSize=50&format=json')
 data = r.json()
 
 conn = psycopg2.connect("dbname=apidb user=postgres")

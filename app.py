@@ -43,7 +43,10 @@ class MainHandler(TemplateHandler):
     self.render_template("index.html")
       
   def post(self):
-    pass
+    sku = self.get_body_argument('q')
+    email = self.get_body_argument('e')
+    apipull(sku)
+    
     
     
     
