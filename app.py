@@ -5,6 +5,8 @@ import queries
 import os
 import json
 import requests
+import apiCall
+import psycopg2
 
 from jinja2 import \
   Environment, PackageLoader, select_autoescape
@@ -14,17 +16,11 @@ ENV = Environment(
   autoescape=select_autoescape(['html', 'xml'])
 )
 
-apikey = os.environ.get('API_KEY')
 
 def initialize(self):
       self.session = queries.Session(
-      'postgresql://postgres@')
+      'postgresql://postgres@apidb')
       
-def apipull(call):
-    SKU = call
-    url = "https://api.bestbuy.com/v1/products(sku=" + SKU + "&(categoryPath.id=abcat0502000))?apiKey="+apikey+"&sort=bestSellingRank.asc&show=image,sku,type,salePrice,regularPrice,shortDescription,modelNumber,name,onSale,manufacturer,customerReviewAverage,bestSellingRank&format=json"
-    r = requests.request("GET", url)
-    return r
 
 class TemplateHandler(tornado.web.RequestHandler):
   def render_template (self, tpl, context=None):
@@ -43,9 +39,9 @@ class MainHandler(TemplateHandler):
     self.render_template("index.html")
       
   def post(self):
-    sku = self.get_body_argument('q')
-    email = self.get_body_argument('e')
-    apipull(sku)
+    sku = self.get_body_argument('sku')
+    #page = apipull(sku)
+    self.redirect('/product/{}'.format(sku))
     
     
     
@@ -62,7 +58,15 @@ class productHandler(TemplateHandler):
       'SELECT * FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) AND sku LIKE %(slug)s,',
       {'slug': slug}
     )
-    self.render_template("product.html", {'product': product[0]})
+    history = self.session.query(
+      'SELECT sku, sale_price,as_of FROM apidata WHERE sku LIKE %(slug) ORDER BY as_of DESC;',
+      {'slug': slug}
+      )
+    context = {
+      product,
+      history
+    }
+    self.render_template("product.html", context)
     
 def make_app():
   return tornado.web.Application([
