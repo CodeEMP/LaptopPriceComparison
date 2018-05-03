@@ -34,7 +34,6 @@ class MainHandler(TemplateHandler):
       
   def post(self):
     sku = self.get_body_argument('sku')
-    #page = apipull(sku)
     self.redirect('/product/{}'.format(sku))
     
     

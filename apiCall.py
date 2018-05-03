@@ -9,7 +9,7 @@ apikey = os.environ.get('API_KEY')
 r = requests.get('https://api.bestbuy.com/v1/products(bestSellingRank>0&(categoryPath.id=abcat0502000))?apiKey='+apikey+'&sort=bestSellingRank.asc&show=bestSellingRank,manufacturer,name,salePrice,image,regularPrice,onSale,shortDescription,sku&pageSize=50&format=json')
 data = r.json()
 
-conn = psycopg2.connect("dbname=apidb user=postgres")
+conn = psycopg2.connect("dbname=dcnhjrhmqkb069 user=postgres")
 cur = conn.cursor()
 
 for a in range (0,50):
