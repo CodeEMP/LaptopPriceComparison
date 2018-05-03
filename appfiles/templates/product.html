@@ -10,7 +10,10 @@
       <div>
         <img class="profile-img" src="6090904_sd.jpg" width="650px">
         <p class="profile-info">  
-          {{ productname }}<br>
+          {% for a in product %}
+          {{ productname }}
+          {% endfor %}
+          <br>
           Product Specification Page<br>
         </p>
       </div>
