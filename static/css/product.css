@@ -1,0 +1,34 @@
+.profile-info {
+  font-family: "Times New Roman";
+  font-size: 35px;
+  color: navy;
+}
+body {
+  margin:0;
+}
+p {
+  font-family: "Times New Roman", serif;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  font-family: "Georgia, Helvetica", sans-serif;
+  font-size: 40px;
+}
+.profile-img {
+  border-radius: 50px;
+  float: left;
+  display: block;
+}
+.big-image {
+  margin: auto;
+  display: block;
+}
+header {
+  background-color: darkblue;
+  color: white;
+  top:0;
+  width:100%;
+  padding:0;
+}
