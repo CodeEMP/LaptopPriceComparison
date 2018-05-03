@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>LaptopPriceComparision</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <style>
+  {% block head %}
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>LaptopPriceComparision</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+      <style>
       body {
         text-align: center;
         background-color: #FAFFFE;
@@ -38,11 +40,16 @@
         background-color: #D8F3E2;
         border: 0.8px solid #D8F3E2;
       }
+      header {
+        background-color: darkblue;
+        color: white;
+      }
     </style>
     </head>
-    <body>
+    {% endblock %}
+    <body style:'text-align: center; margin:0'>
         {% block header %}
-        <header>
+        <header style="background-color: darkblue; color: white; margin:0">
             <h1 style='text-align: center;'>
                 Laptop Price Comparison
             </h1>

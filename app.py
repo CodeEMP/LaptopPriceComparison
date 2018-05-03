@@ -16,11 +16,6 @@ ENV = Environment(
 )
 
 
-def initialize(self):
-      self.session = queries.Session(
-      'postgresql://postgres@apidb')
-      
-
 class TemplateHandler(tornado.web.RequestHandler):
   def render_template (self, tpl, context=None):
     if context is None:
@@ -53,14 +48,11 @@ class productHandler(TemplateHandler):
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
-    conn = psycopg2.connect("dbname=apidb user=postgres")
-    cur = conn.cursor()
-    product = cur.execute(
+    product = self.session.query(
       'SELECT * FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) AND sku LIKE %(slug)s',
       {'slug': slug}
     )
-    cur.fetchone()
-    self.render_template("product.html", product)
+    self.render_template("product.html", {'product' : product[0]})
     
 def make_app():
   return tornado.web.Application([
