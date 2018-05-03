@@ -48,24 +48,19 @@ class MainHandler(TemplateHandler):
 class productHandler(TemplateHandler):
   def initialize(self):
       self.session = queries.Session(
-      'postgresql://postgres@')
+      'postgresql://postgres@localhost:5432/apidb')
   def get(self, slug):
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
-    product = self.session.query(
-      'SELECT * FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) AND sku LIKE %(slug)s,',
+    conn = psycopg2.connect("dbname=apidb user=postgres")
+    cur = conn.cursor()
+    product = cur.execute(
+      'SELECT * FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) AND sku LIKE %(slug)s',
       {'slug': slug}
     )
-    history = self.session.query(
-      'SELECT sku, sale_price,as_of FROM apidata WHERE sku LIKE %(slug) ORDER BY as_of DESC;',
-      {'slug': slug}
-      )
-    context = {
-      product,
-      history
-    }
-    self.render_template("product.html", context)
+    cur.fetchone()
+    self.render_template("product.html", product)
     
 def make_app():
   return tornado.web.Application([
