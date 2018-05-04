@@ -47,6 +47,12 @@
         {{ product['short_description'] }}
       </p>
     </div>
+  <div>
+    <ul>
+      {% for i in history %}
+      <li>{{ i['as_of'] }} : {{ i['sale_price'] }}</li>
+    </ul>
+  </div>
 {% endblock %}
         
   

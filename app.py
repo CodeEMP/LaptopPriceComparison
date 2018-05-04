@@ -42,7 +42,7 @@ class MainHandler(TemplateHandler):
 class productHandler(TemplateHandler):
   def initialize(self):
       self.session = queries.Session(
-      'postgresql://ukzppuglreogfo:017f117fb05419ba5c631061538bcf6f6220091f5b98fdbb4573882ab7fd65e2@ec2-54-83-204-6.compute-1.amazonaws.com:5432/dcnhjrhmqkb069')
+      'postgresql://postgres@localhost:5432/apidb')
   def get(self, slug):
     self.set_header(
       'Cache-Control',
@@ -51,7 +51,14 @@ class productHandler(TemplateHandler):
       'SELECT * FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) AND sku LIKE %(slug)s',
       {'slug': slug}
     )
-    self.render_template("product.html", {'product' : product[0]})
+    history = self.session.query(
+      "SELECT sku, sale_price,as_of FROM apidata WHERE sku LIKE '6190769' ORDER BY as_of DESC;"
+    )
+    context = {
+      'product' : product[0],
+      'history' : history
+    }
+    self.render_template("product.html", context)
     
 def make_app():
   return tornado.web.Application([
