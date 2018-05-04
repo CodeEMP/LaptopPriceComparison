@@ -7,19 +7,9 @@
       <div style="border-right: solid 2px black; width:15%; float: left"> <a href="/product/{{ i['sku'] }}">{{ i['sku'] }}</a></div>
       <div style="border-right: solid 2px black; width:50%; float: left; overflow: hidden"> {{ i['productname'] }}</div>
       <div style="width: 15%; float: left"> {{ i['sale_price'] }}</div>
+      <br />
     </li>
     {% endfor %}
   </ul>
 </div>
-{% endblock %}
-{% block footer %}
-<footer style="background-color: darkblue;
-        color: magenta;
-        border: solid 4px yellow;
-        margin-top: 300px;
-        padding: 10px;
-        width: 100%;
-        bottom:0;
-        text-align:center">
-</footer>
 {% endblock %}
