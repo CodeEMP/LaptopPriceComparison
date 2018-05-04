@@ -1,5 +1,4 @@
 .profile-info {
-  font-family: "Times New Roman";
   font-size: 35px;
   color: navy;
 }
@@ -7,7 +6,6 @@ body {
   margin:0;
 }
 p {
-  font-family: "Times New Roman", serif;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
