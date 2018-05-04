@@ -4,9 +4,9 @@
   <ul>
     {% for i in product_list %}
     <li style="border: solid 2px black; width:90%">
-      <div style="border-right: solid 2px black; width:15%; float: left"> <a href="/product/{{ i['sku'] }}">{{ i['sku'] }}</a></div>
-      <div style="border-right: solid 2px black; width:50%; float: left; overflow: hidden"> {{ i['productname'] }}</div>
-      <div style="width: 20%; float: left"> {{ i['sale_price'] }}</div>
+      <div style="border-right: solid 2px black; width:15%; float: left; overflow: scroll; margin: 0"> <a href="/product/{{ i['sku'] }}">{{ i['sku'] }}</a></div>
+      <div style="border-right: solid 2px black; width:50%; float: left; overflow: scroll; margin: 0"> {{ i['productname'] }}</div>
+      <div style="width: 20%; float: left; overflow: scroll; margin: 0"> {{ i['sale_price'] }}</div>
       <br />
     </li>
     {% endfor %}
