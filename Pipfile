@@ -14,3 +14,7 @@ verify_ssl = true
 tornado = "*"
 "jinja2" = "*"
 queries = "*"
+requests = "*"
+"psycopg2" = "*"
+python-crontab = "*"
+croniter = "*"

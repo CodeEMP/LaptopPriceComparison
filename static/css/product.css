@@ -3,6 +3,9 @@
   font-size: 35px;
   color: navy;
 }
+body {
+  margin:0;
+}
 p {
   font-family: "Times New Roman", serif;
   font-size: 20px;
@@ -21,4 +24,11 @@ h2 {
 .big-image {
   margin: auto;
   display: block;
+}
+header {
+  background-color: darkblue;
+  color: white;
+  top:0;
+  width:100%;
+  padding:0;
 }
