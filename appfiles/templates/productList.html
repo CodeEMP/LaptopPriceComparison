@@ -2,22 +2,15 @@
 {% block content %}
 <div>
   <ul>
-    {% for i in iterable %}}
-    <li>
-      <div> i ["SKU"] </div>
-      <div> i ["Product Name"] </div>
-      <div> i ["Sale Price"]</div>
-      <div> i ["Regular Price"]</div>
-      <div> i ["Best Selling Rank"]</div>
-      <div> i ["Manufacturer"]</div>
-      <div> i ["Short Description"]</div>
+    {% for i in product_list %}}
+    <li style="border: solid 2px black">
+      <div style="border-right: solid 2px black; width:15%; float: left"> {{ i["SKU"] }}</div>
+      <div style="border-right: solid 2px black; width:50%; float: left"> {{ i["Product Name"] }}</div>
+      <div style="width: 15%; float: left"> {{ i["Sale Price"] }}</div>
     </li>
   </ul>
 </div>
 {% endblock %}
-
-{% block content %}{% endblock %}
-
 {% block footer %}
 <footer style="background-color: darkblue;
         color: magenta;

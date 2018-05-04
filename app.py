@@ -71,6 +71,10 @@ class listHandler(TemplateHandler):
     product_list = self.session.query(
       "SELECT sku, productname, sale_price FROM apidata WHERE (sku, as_of) IN (SELECT sku, MAX(as_of) FROM apidata GROUP BY sku) ORDER BY best_selling_rank ASC"
       ).items()
+    context = {
+      'product_list': product_list
+    }
+    self.render_template("productList.html", context)
 
     
 def make_app():
