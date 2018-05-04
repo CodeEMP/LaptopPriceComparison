@@ -44,6 +44,16 @@
         background-color: darkblue;
         color: white;
       }
+      footer {
+        background-color: darkblue;
+        color: white;
+        border: solid 4px yellow;
+        margin-top: 300px;
+        padding: 10px;
+        position: absolute;
+        width: 100%;
+        bottom:0;
+      }
     </style>
     </head>
     {% endblock %}
@@ -53,10 +63,14 @@
             <h1 style='text-align: center;'>
                 Laptop Price Comparison
             </h1>
+            <a href="/" style="color: yellow; position:absolute; right:20px; top:30px; font-size:1.3em">Home</a>
         </header>
         {% endblock %}
         {% block content %}{% endblock %}
         {% block footer %}
+        <footer>
+          <a href="/list" >Product List</a>
+        </footer>
         {% endblock %}
     </body>
 </html>
