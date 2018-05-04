@@ -42,7 +42,7 @@ class MainHandler(TemplateHandler):
 class productHandler(TemplateHandler):
   def initialize(self):
       self.session = queries.Session(
-      'postgresql://postgres@postgres://ukzppuglreogfo:017f117fb05419ba5c631061538bcf6f6220091f5b98fdbb4573882ab7fd65e2@ec2-54-83-204-6.compute-1.amazonaws.com:5432/dcnhjrhmqkb069')
+      'postgresql://ukzppuglreogfo:017f117fb05419ba5c631061538bcf6f6220091f5b98fdbb4573882ab7fd65e2@ec2-54-83-204-6.compute-1.amazonaws.com:5432/dcnhjrhmqkb069')
   def get(self, slug):
     self.set_header(
       'Cache-Control',
