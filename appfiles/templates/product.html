@@ -9,11 +9,8 @@
 {% block content %}
     <div>
       <div>
-        <script type='text/javascript'>
-          var image = document.getElementById('laptopImage');
-          image.src =  {{ product['image_url'] }};
-        </script>
-        <img class="profile-img" src="" width="650px" id='laptopImage'>
+        <img class="profile-img" src="{{ product['image_url'] }}" width="650px" id='laptopImage'>
+        <br>
         <p class="profile-info">  
           {{ product['productname'] }}
           <br>
