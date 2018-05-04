@@ -16,6 +16,7 @@
           <br>
         </p>
       </div>
+      <br>
   <div class="row">
     <div class="col" style="margin: 10px;">
       <label>SKU: </label>
@@ -47,10 +48,12 @@
         {{ product['short_description'] }}
       </p>
     </div>
+    <hr>
   <div>
+    <h3>Price history: </h3>
     <ul>
       {% for i in history %}
-      <li>{{ i['as_of'] }} : {{ i['sale_price'] }}</li>
+      <li>{{ i['as_of'] }}:   {{ i['sale_price'] }}</li><br>
       {% endfor %}
     </ul>
   </div>
