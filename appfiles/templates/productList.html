@@ -2,12 +2,13 @@
 {% block content %}
 <div>
   <ul>
-    {% for i in product_list %}}
+    {% for i in product_list %}
     <li style="border: solid 2px black">
       <div style="border-right: solid 2px black; width:15%; float: left"> {{ i["SKU"] }}</div>
       <div style="border-right: solid 2px black; width:50%; float: left"> {{ i["Product Name"] }}</div>
       <div style="width: 15%; float: left"> {{ i["Sale Price"] }}</div>
     </li>
+    {% endfor %}
   </ul>
 </div>
 {% endblock %}
