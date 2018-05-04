@@ -1,56 +1,58 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block head %}
   <head>
     <meta charset="utf-8">
     <title>Laptop Product Page</title>
-    <link href="product.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/product.css" rel="stylesheet" type="text/css">
   </head>
-  <body style="text-align: center;">
+{% endblock %}
+{% block content %}
     <div>
       <div>
-        <img class="profile-img" src="6090904_sd.jpg" width="650px">
+        <img class="profile-img" src="{{ product['image_url'] }}" width="650px" id='laptopImage'>
+        <br>
         <p class="profile-info">  
-          BestBuy Laptop<br>
-          Product Specification Page<br>
+          {{ product['productname'] }}
+          <br>
         </p>
       </div>
-<form>
   <div class="row">
     <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="Short Description">
+      <label>SKU: </label>
+      <p>{{ product['sku'] }}</p>
+      <br>
     </div>
     <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="Model Number">
+      <label>Manufacturer: </label>
+      <p>{{ product['manufacturer'] }}</p>
+      <br>
     </div>
     <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="SKU Number">
+      <label>Price: </label>
+      <p>{{ product['sale_price'] }}</p>
+      <br>
     </div>
     <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="Manufacturer">
-    </div>
-    <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="Best Selling Rank">
-    </div>
-    <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="Regular Price">
-    </div>
-    <div class="col" style="margin: 10px;">
-      <input type="text" class="form-control" placeholder="Sale Price">
+      <label>Last check: </label>
+      <p>{{ product['as_of'] }}</p>
+      <br>
     </div>
   </div>
-</form>
     <div>
-      <h2>
-        Tempus urna et pharetra pharetra massa. 
-      </h2>
+      <hr>
+      <h5>
+        {{ product['productname'] }} 
+      </h5>
       <p>
-        Adipiscing diam donec adipiscing tristique risus nec feugiat. Quam pellentesque nec nam aliquam sem et tortor consequat id. 
-      </p>
-      <p>
-        Tincidunt ornare massa eget egestas purus. Felis imperdiet proin fermentum leo vel orci porta. Vulputate odio ut enim blandit volutpat maecenas. Pellentesque massa placerat duis ultricies lacus. 
+        {{ product['short_description'] }}
       </p>
     </div>
-  </body>
-</html>
+  <div>
+    <ul>
+      {% for i in history %}
+      <li>{{ i['as_of'] }} : {{ i['sale_price'] }}</li>
+    </ul>
+  </div>
+{% endblock %}
         
   
