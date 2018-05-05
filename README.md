@@ -34,10 +34,34 @@ Cody, Chih-Ming, Jim
 [ ] Price drop alert, user sets up price drop notification, if price drops below set price, email is sent 
 
 ## Installing and Running
--Clone or download repository 
+1. Clone or download repository 
 
--Install packages from pipfile 
+2. Install packages from pipfile 
 `$ pipenv install`
+
+3. Create postgres database
+
+    `CREATE TABLE apidata (
+      id SERIAL NOT NULL PRIMARY KEY,
+      sku varchar NOT NULL,
+      productname varchar NOT NULL,
+      best_selling_rank integer,
+      manufacturer varchar,
+      sale_price decimal,    
+      short_description varchar,
+      image_url varchar,
+      regular_price decimal,
+      onsale boolean, 
+      as_of timestamp
+    );`
+
+4. Call API to populate database
+
+    `pipenv run python3 apiCall.py`
+   
+5. Run app locally
+
+    `pipenv run python3 app.py`
 
 ## Experience
 -Initially wanted to do app that pulled prices from Amazon API and Bestbuy API and compare them (since Best Buy will price match Amazon), but getting Amazon API key was time consuming since you had to go through an approval process. Best Buy’s API key approval process was shorter and was able to get key, so decided to work with only Best Buy 
