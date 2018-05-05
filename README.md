@@ -34,7 +34,10 @@ Cody, Chih-Ming, Jim
 [ ] Price drop alert, user sets up price drop notification, if price drops below set price, email is sent 
 
 ## Installing and Running
-put stuff here
+-Clone or download repository 
+
+-Install packages from pipfile 
+`$ pipenv install`
 
 ## Experience
 -Initially wanted to do app that pulled prices from Amazon API and Bestbuy API and compare them (since Best Buy will price match Amazon), but getting Amazon API key was time consuming since you had to go through an approval process. Best Buy’s API key approval process was shorter and was able to get key, so decided to work with only Best Buy 
