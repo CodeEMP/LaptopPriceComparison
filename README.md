@@ -4,7 +4,7 @@ Camelcamelcamel clone for Best Buy laptops
 
 An app that pulls and stores price data from Best Buy’s API for the 50 most popular laptops. Shows current price and price history. 
 
-
+Check it out at [https://laptoppricecomparison.herokuapp.com/](https://laptoppricecomparison.herokuapp.com/).
 
 ## Team
 Cody, Chih-Ming, Jim 
